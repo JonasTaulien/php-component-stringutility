@@ -1,7 +1,13 @@
 # php-component-stringutility
 * Well tested functions on strings:
 
-```
+```php 
+use JonasRudolph\PHPComponents\StringUtility\Base\StringUtilityInterface;
+use JonasRudolph\PHPComponents\StringUtility\Implementation\StringUtility;
+
+/** @var StringUtilityInterface */
+$stringUtility = new StringUtility();
+
 $stringUtility->contains('mySecr3t', 'cr3') === true
 
 $stringUtility->startsWith('https://my-domain.com', 'https') === true
