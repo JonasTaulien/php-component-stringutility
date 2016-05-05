@@ -1,12 +1,22 @@
-### Info: This is a private project and not ment to be used by someone else. But if you find it useful, I am open for any improvements =)
-
 # php-component-stringutility
+* Well tested functions on strings:
+
+```
+$stringUtility->contains('mySecr3t', 'cr3') === true
+
+$stringUtility->startsWith('https://my-domain.com', 'https') === true
+
+$stringUtility->endsWith('www.my-domain.com/img/logo.svg', '.svg') === true;
+
+$stringUtility->removePrefix('http://www.my-domain.com', 'http://') === 'www.my-domain.com'
+
+$stringUtility->substringAfter('www.my-domain.com/index.php', '.com/') === 'index.php'
+
+$stringUtility->substringBefore('www.my-domain.com/user?id=1&token=xyz', '?') === 'www.my-domain.com/user'
+
+$stringUtility->splitAt('user@my-domain.com:secret', ':') === ['user@my-domain.com', 'secret']
+```
 
 ## TODO:
-- Update composer: `php composer.phar update`
-- Add all files: `git add -A`
-- Commit: `git commit -m "Initial commit"`
-- Push `git push`
-- Suibmit package at https://packagist.org/packages/submit
-- Add githook so packagist is updated: https://github.com/JonasRudolph/php-component-stringutility/settings/hooks/new?service=packagist
-- Implement the component 
+- Tag component with `git tag 0.1.0`
+- Implement Unit-Tests
