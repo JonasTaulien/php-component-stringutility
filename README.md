@@ -16,7 +16,3 @@ $stringUtility->substringBefore('www.my-domain.com/user?id=1&token=xyz', '?') ==
 
 $stringUtility->splitAt('user@my-domain.com:secret', ':') === ['user@my-domain.com', 'secret']
 ```
-
-## TODO:
-- Tag component with `git tag 0.1.0`
-- Implement Unit-Tests
