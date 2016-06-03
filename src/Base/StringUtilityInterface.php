@@ -41,7 +41,7 @@ interface StringUtilityInterface
 
 
     /**
-     * If the string starts with the prefix, this function removes the string without the prefix.
+     * If the string starts with the prefix, this function returns the string without the prefix.
      * For example:
      * removePrefix('http://www.my-domain.com', 'http://') <=> 'www.my-domain.com'
      *
@@ -53,6 +53,39 @@ interface StringUtilityInterface
      * @return string
      */
     public function removePrefix($string, $prefix);
+
+
+
+    /**
+     * If the string ends with the suffix, this function returns the string without the suffix.
+     * For example:
+     * removeSuffix('my-domain.com', '.com') <=> 'my-domain'
+     *
+     * If the string does not end with the suffix, this function will return the string.
+     *
+     * @param string $string
+     * @param string $suffix
+     * @return string
+     */
+    public function removeSuffix($string, $suffix);
+
+
+
+    /**
+     * Returns the string without any whitspace characters.
+     *
+     * Removed characters:
+     * - " " (ASCII 32 (0x20)), an ordinary space.
+     * - "\t" (ASCII 9 (0x09)), a tab.
+     * - "\n" (ASCII 10 (0x0A)), a line feed.
+     * - "\r" (ASCII 13 (0x0D)), a carriage return.
+     * - "\0" (ASCII 0 (0x00)), a NUL-Byte.
+     * - "\x0B" (ASCII 11 (0x0B)), a vertical tab.
+     *
+     * @param string $string
+     * @return string
+     */
+    public function removeWhitespace($string);
 
 
 

@@ -136,6 +136,35 @@ abstract class StringUtilityInterfaceTest extends PHPUnit_Framework_TestCase
 
 
 
+    /**
+     * @param string $string
+     * @param string $suffix
+     * @param string $wantedResult
+     *
+     * @dataProvider removeSuffixDataProvider
+     */
+    public function testRemoveSuffix($string, $suffix, $wantedResult)
+    {
+        $result = $this->stringUtility->removeSuffix($string, $suffix);
+        $this->assertEquals($wantedResult, $result);
+    }
+
+
+
+    /**
+     * @param string $string
+     * @param string $wantedResult
+     *
+     * @dataProvider removeWhitespaceDataProvider
+     */
+    public function testRemoveWhitespace($string, $wantedResult)
+    {
+        $result = $this->stringUtility->removeWhitespace($string);
+        $this->assertEquals($wantedResult, $result);
+    }
+
+
+
     public function containsDataProvider()
     {
         return [
@@ -209,6 +238,22 @@ abstract class StringUtilityInterfaceTest extends PHPUnit_Framework_TestCase
 
 
 
+    public function removeSuffixDataProvider()
+    {
+        return [
+            ['my-domain.com', '.com', 'my-domain'],
+            ['123456789', '123456789', ''],
+            ['123456', '', '123456'],
+            ['dasd-asd', 'd', 'dasd-as'],
+
+            ['123456789', '1234567890', '123456789'],
+            ['http://www.my-domain.com', '://www.my-domain.com', 'http'],
+            ['asd-asd', '-asd', 'asd']
+        ];
+    }
+
+
+
     public function substringAfterDataProvider()
     {
         return [
@@ -236,6 +281,7 @@ abstract class StringUtilityInterfaceTest extends PHPUnit_Framework_TestCase
             ['12345', '34', '12'],
             ['abcdefg', 'abcdefg', ''],
             ['abcdefg', '', ''],
+            ['abcdefg', 'efg', 'abcd'],
 
             ['abcdefg', 'aabcdefg', 'abcdefg'],
             ['abcdefg', 'efgh', 'abcdefg'],
@@ -244,7 +290,9 @@ abstract class StringUtilityInterfaceTest extends PHPUnit_Framework_TestCase
     }
 
 
-    public function splitAtDataProvider(){
+
+    public function splitAtDataProvider()
+    {
         return [
             ['user@my-domain.com:secret', ':', ['user@my-domain.com', 'secret']],
             ['user@my-domain.com', '@', ['user', 'my-domain.com']],
@@ -258,6 +306,24 @@ abstract class StringUtilityInterfaceTest extends PHPUnit_Framework_TestCase
             ['user(at)my-domain.com', '@', ['user(at)my-domain.com', '']],
             ['abc', 'abcd', ['abc', '']],
             ['bcd', 'abcd', ['bcd', '']]
+        ];
+    }
+
+
+
+    public function removeWhitespaceDataProvider()
+    {
+        return [
+            ['This Is My Story', 'ThisIsMyStory'],
+            ["\tA String.\nWith\rLinebreak \0 and\tOther whitespace\t", 'AString.WithLinebreakandOtherwhitespace'],
+            [' ', ''],
+            ["\n", ''],
+            ["\t", ''],
+            ["\r", ''],
+            ["\0", ''],
+            ["\x0B", ''],
+            [' 12345 ', '12345'],
+            ['abcdefg', 'abcdefg']
         ];
     }
 

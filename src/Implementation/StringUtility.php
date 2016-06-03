@@ -15,14 +15,14 @@ class StringUtility implements StringUtilityInterface
 
     public function startsWith($string, $prefix)
     {
-        return substr($string, 0, strlen($prefix)) === $prefix;
+        return ($prefix === '') || (substr($string, 0, strlen($prefix)) === $prefix);
     }
 
 
 
     public function endsWith($string, $suffix)
     {
-        return substr($string, (strlen($string) - strlen($suffix))) === $suffix;
+        return ($suffix === '') || (substr($string, (strlen($string) - strlen($suffix))) === $suffix);
     }
 
 
@@ -30,6 +30,20 @@ class StringUtility implements StringUtilityInterface
     public function removePrefix($string, $prefix)
     {
         return $this->startsWith($string, $prefix) ? substr($string, strlen($prefix)) : $string;
+    }
+
+
+
+    public function removeSuffix($string, $suffix)
+    {
+        return $this->endsWith($string, $suffix) ? substr($string, 0, (strlen($string) - strlen($suffix))): $string;
+    }
+
+
+
+    public function removeWhitespace($string)
+    {
+        return str_replace([' ', "\t", "\n", "\r", "\0", "\x0B"], '', $string);
     }
 
 
@@ -62,7 +76,7 @@ class StringUtility implements StringUtilityInterface
 
         return (false === $strposResult)
             ? [$string, '']
-            : [substr($string, 0,  $strposResult), substr($string, $strposResult + strlen($delimiter))];
+            : [substr($string, 0, $strposResult), substr($string, $strposResult + strlen($delimiter))];
     }
 
 }
