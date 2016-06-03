@@ -16,6 +16,10 @@ $stringUtility->endsWith('www.my-domain.com/img/logo.svg', '.svg') === true;
 
 $stringUtility->removePrefix('http://www.my-domain.com', 'http://') === 'www.my-domain.com'
 
+$stringUtility->removeSuffix('my-domain.com', '.com') === 'my-domain'
+
+$stringUtility->removeWhitespace("Any String\tWith\nWhitespace\r.\0") === 'AnyStringWithWitespace.'
+
 $stringUtility->substringAfter('www.my-domain.com/index.php', '.com/') === 'index.php'
 
 $stringUtility->substringBefore('www.my-domain.com/user?id=1&token=xyz', '?') === 'www.my-domain.com/user'
