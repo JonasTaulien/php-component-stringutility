@@ -7,7 +7,8 @@ interface StringUtilityInterface
 
     /**
      * Returns true if the string contains the needle and otherwise false.<br>
-     * Every string contains the empty string: contains('any string', '') <=> true
+     * Every string contains the empty string: <br>
+     * contains('any string', '') === true
      *
      * @param string $string
      * @param string $needle
@@ -20,7 +21,8 @@ interface StringUtilityInterface
 
     /**
      * Returns true if the string starts with the prefix and otherwise false.<br>
-     * Every string starts with the empty string: startsWith('any string', '') <=> true
+     * Every string starts with the empty string: <br>
+     * startsWith('any string', '') === true
      *
      * @param string $string
      * @param string $prefix
@@ -33,7 +35,8 @@ interface StringUtilityInterface
 
     /**
      * Returns true if the string ends with the suffix and otherwise false.<br>
-     * Every string ends with the empty string: endsWith('any string', '') === true
+     * Every string ends with the empty string: <br>
+     * endsWith('any string', '') === true
      *
      * @param string $string
      * @param string $suffix
