@@ -6,7 +6,8 @@ interface StringUtilityInterface
 {
 
     /**
-     * Returns true if the string contains the needle and otherwise false.
+     * Returns true if the string contains the needle and otherwise false.<br>
+     * Every string contains the empty string: contains('any string', '') <=> true
      *
      * @param string $string
      * @param string $needle
@@ -18,7 +19,8 @@ interface StringUtilityInterface
 
 
     /**
-     * Returns true if the string starts with the prefix and otherwise false.
+     * Returns true if the string starts with the prefix and otherwise false.<br>
+     * Every string starts with the empty string: startsWith('any string', '') <=> true
      *
      * @param string $string
      * @param string $prefix
@@ -30,7 +32,9 @@ interface StringUtilityInterface
 
 
     /**
-     * Returns true if the string ends with the suffix and otherwise false.
+     * Returns true if the string ends with the suffix and otherwise false.<br>
+     * Every string ends with the empty string: endsWith('any string', '') === true
+     *
      * @param string $string
      * @param string $suffix
      *
@@ -41,10 +45,11 @@ interface StringUtilityInterface
 
 
     /**
-     * If the string starts with the prefix, this function returns the string without the prefix.
-     * For example:
-     * removePrefix('http://www.my-domain.com', 'http://') <=> 'www.my-domain.com'
-     *
+     * If the string starts with the prefix, this function returns the string without the prefix.<br>
+     * For example:<br>
+     * removePrefix('http://www.my-domain.com', 'http://') === 'www.my-domain.com'<br>
+     * removePrefix('any string', '') === 'any string'<br>
+     * <br>
      * If the string does not start with the prefix, this function will return the string.
      *
      * @param string $string
@@ -57,10 +62,11 @@ interface StringUtilityInterface
 
 
     /**
-     * If the string ends with the suffix, this function returns the string without the suffix.
-     * For example:
-     * removeSuffix('my-domain.com', '.com') <=> 'my-domain'
-     *
+     * If the string ends with the suffix, this function returns the string without the suffix.<br>
+     * For example:<br>
+     * removeSuffix('my-domain.com', '.com') === 'my-domain'<br>
+     * removeSuffix('any string', '') === 'any string'<br>
+     * <br>
      * If the string does not end with the suffix, this function will return the string.
      *
      * @param string $string
@@ -72,7 +78,7 @@ interface StringUtilityInterface
 
 
     /**
-     * Returns the string without any whitspace characters.
+     * Returns the string without any whitspace characters.<br>
      *
      * Removed characters:
      * - " " (ASCII 32 (0x20)), an ordinary space.
@@ -90,11 +96,12 @@ interface StringUtilityInterface
 
 
     /**
-     * Returns the substring after the first occurrence of the needle
-     * For example:
-     * removeUntilEndOfNeedle('www.my-domain.com/index.php', '.com/') <=> 'index.php'
-     *
-     * If the needle is not found, this function will return the string.
+     * Returns the substring after the first occurrence of the needle<br>
+     * For example:<br>
+     * substringAfter('www.my-domain.com/index.php', '.com/') === 'index.php'<br>
+     * substringAfter('any string', '') === 'any string'<br>
+     * <br>
+     * If the needle is not found, this function will return the string.<br>
      *
      * @param string $string
      * @param string $needle
@@ -106,11 +113,12 @@ interface StringUtilityInterface
 
 
     /**
-     * Returns the substring before the first occurrence of the needle
-     * For example:
-     * removeNeedleAndRest('www.my-domain.com/user?id=1&token=xyz', '?') <=> 'http://www.mydomain.com/user'
-     *
-     * If the needle is not found, this function will return the string.
+     * Returns the substring before the first occurrence of the needle<br>
+     * For example:<br>
+     * substringBefore('www.my-domain.com/user?id=1', '?') === 'http://www.mydomain.com/user' <br>
+     * substringBefore('any string', '') === ''<br>
+     * <br>
+     * If the needle is not found, this function will return the string.<br>
      *
      * @param string $string
      * @param string $needle
@@ -119,14 +127,16 @@ interface StringUtilityInterface
      */
     public function substringBefore($string, $needle);
 
+
+
     /**
      * Returns array with two strings. The first is the string before the first occurrence of the delimiter,
-     * the second the string which starts at the first character after the first occurrence of the delimiter.
-     * For example:
-     * splitAt('user@my-domain.com:secret', ':') <=> array('user@my-domain.com', 'secret')
-     * or
-     * splitAt('this and that', ' and ') <=> array('this', 'that')
-     *
+     * the second the string which starts at the first character after the first occurrence of the delimiter.<br>
+     * For example:<br>
+     * split('user@my-domain.com:secret', ':') === array('user@my-domain.com', 'secret')<br>
+     * split('this and that', ' and ') === array('this', 'that')<br>
+     * split('any string', '') === array('', 'any string')<br>
+     * <br>
      * If the delimiter is not contained in the string, this function will return an array with the given string as first
      * and an empty string as the second element.
      *
