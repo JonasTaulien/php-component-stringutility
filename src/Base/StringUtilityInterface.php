@@ -96,6 +96,26 @@ interface StringUtilityInterface
      */
     public function removeWhitespace($string);
 
+    /**
+     * Returns the substring after the first occurrence of $after<br />
+     * and before the first occurrence of $before<br />
+     * For example:<br />
+     * substring('there is no foo without a bar', 'no ', ' without') === 'foo'<br />
+     * substring('there is no foo without a bar', 'baz', ' no') === 'there is'<br />
+     * substring('there is no foo without a bar', 'foo ', 'baz') === 'without a bar'<br />
+     * substring('there is no foo without a bar', 'foobar ', 'baz') === 'there is no foo without a bar'<br />
+     * <br />
+     * If $after is not found, this function will return the string from the beginning.<br />
+     * If $before is not found, this function will return the string until the end.<br />
+     *
+     * @param string $string
+     * @param string $after
+     * @param string $before
+     *
+     * @return string
+     */
+    public function substring($string, $after, $before);
+
 
 
     /**

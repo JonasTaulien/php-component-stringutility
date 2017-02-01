@@ -69,6 +69,22 @@ class StringUtility implements StringUtilityInterface
     /**
      * @inheritdoc
      */
+    public function substring($string, $after, $before)
+    {
+        return $this->substringBefore(
+            $this->substringAfter(
+                $string,
+                $after
+            ),
+            $before
+        );
+    }
+
+
+
+    /**
+     * @inheritdoc
+     */
     public function substringAfter($string, $needle)
     {
         //If needle empty or not found: Return string
