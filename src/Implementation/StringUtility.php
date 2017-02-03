@@ -69,22 +69,6 @@ class StringUtility implements StringUtilityInterface
     /**
      * @inheritdoc
      */
-    public function substringBetween($string, $startAfter, $untilBefore)
-    {
-        return $this->substringBefore(
-            $this->substringAfter(
-                $string,
-                $startAfter
-            ),
-            $untilBefore
-        );
-    }
-
-
-
-    /**
-     * @inheritdoc
-     */
     public function substringAfter($string, $needle)
     {
         //If needle empty or not found: Return string
@@ -106,6 +90,22 @@ class StringUtility implements StringUtilityInterface
         return (false === $strposResult)
             ? $string
             : substr($string, 0, $strposResult);
+    }
+
+
+
+    /**
+     * @inheritdoc
+     */
+    public function substringBetween($string, $startAfter, $untilBefore)
+    {
+        return $this->substringBefore(
+            $this->substringAfter(
+                $string,
+                $startAfter
+            ),
+            $untilBefore
+        );
     }
 
 
