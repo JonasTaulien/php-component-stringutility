@@ -89,6 +89,20 @@ abstract class StringUtilityInterfaceTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($wantedResult, $result);
     }
 
+    /**
+     * @param string $string
+     * @param string $startAfter
+     * @param string $untilBefore
+     * @param string $expectedResult
+     *
+     * @dataProvider substringDataProvider
+     */
+    public function testSubstring($string, $startAfter, $untilBefore, $expectedResult)
+    {
+        $result = $this->stringUtility->substringBetween($string, $startAfter, $untilBefore);
+        $this->assertEquals($expectedResult, $result);
+    }
+
 
 
     /**
@@ -252,6 +266,67 @@ abstract class StringUtilityInterfaceTest extends PHPUnit_Framework_TestCase
         ];
     }
 
+
+
+    public function substringDataProvider()
+    {
+        return [
+            'only unique words' => [
+                'string'            => 'a line with only unique words',
+                'startAfter'        => 'with',
+                'untilBefore'       => 'unique',
+                'expectedResult'    => ' only '
+            ],
+            'duplicated words' => [
+                'string'            => 'a line with some duplicated words like line some or words',
+                'startAfter'        => 'some',
+                'untilBefore'       => 'words',
+                'expectedResult'    => ' duplicated '
+            ],
+            'no after' => [
+                'string'            => 'no after available here',
+                'startAfter'        => 'some',
+                'untilBefore'       => 'here',
+                'expectedResult'    => 'no after available '
+            ],
+            'no before' => [
+                'string'            => 'no before available here',
+                'startAfter'        => 'before',
+                'untilBefore'       => 'some',
+                'expectedResult'    => ' available here'
+            ],
+            'no after and no before' => [
+                'string'            => 'no before and after available here',
+                'startAfter'        => 'some',
+                'untilBefore'       => 'word',
+                'expectedResult'    => 'no before and after available here'
+            ],
+            'after is empty' => [
+                'string'            => 'no before and after available here',
+                'startAfter'        => '',
+                'untilBefore'       => 'available',
+                'expectedResult'    => 'no before and after '
+            ],
+            'before is empty' => [
+                'string'            => 'no before and after available here',
+                'startAfter'        => 'before',
+                'untilBefore'       => '',
+                'expectedResult'    => ''
+            ],
+            'before and after are empty' => [
+                'string'            => 'no before and after available here',
+                'startAfter'        => '',
+                'untilBefore'       => '',
+                'expectedResult'    => ''
+            ],
+            'before is before after' => [
+                'string'            => 'no before and after available here',
+                'startAfter'        => 'after',
+                'untilBefore'       => 'before',
+                'expectedResult'    => ' available here'
+            ]
+        ];
+    }
 
 
     public function substringAfterDataProvider()

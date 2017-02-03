@@ -97,6 +97,22 @@ class StringUtility implements StringUtilityInterface
     /**
      * @inheritdoc
      */
+    public function substringBetween($string, $startAfter, $untilBefore)
+    {
+        return $this->substringBefore(
+            $this->substringAfter(
+                $string,
+                $startAfter
+            ),
+            $untilBefore
+        );
+    }
+
+
+
+    /**
+     * @inheritdoc
+     */
     public function split($string, $delimiter)
     {
         $strposResult = ($delimiter === '') ? 0 : strpos($string, $delimiter);
