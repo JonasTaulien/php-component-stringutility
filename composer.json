@@ -7,6 +7,20 @@
             "email": "jonas.ru@gmx.de"
         }
     ],
+    "keywords": [
+        "string",
+        "utility",
+        "contains",
+        "startsWith",
+        "endsWith",
+        "removePrefix",
+        "removeSuffix",
+        "removeWhitespace",
+        "substringAfter",
+        "substringBefore",
+        "substringBetween",
+        "split"
+    ],
     "require": {
         "php": ">=5.5"
     },
