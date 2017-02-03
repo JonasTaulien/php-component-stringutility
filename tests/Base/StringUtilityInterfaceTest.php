@@ -91,15 +91,15 @@ abstract class StringUtilityInterfaceTest extends PHPUnit_Framework_TestCase
 
     /**
      * @param string $string
-     * @param string $after
-     * @param string $before
+     * @param string $startAfter
+     * @param string $untilBefore
      * @param string $expectedResult
      *
      * @dataProvider substringDataProvider
      */
-    public function testSubstring($string, $after, $before, $expectedResult)
+    public function testSubstring($string, $startAfter, $untilBefore, $expectedResult)
     {
-        $result = $this->stringUtility->substring($string, $after, $before);
+        $result = $this->stringUtility->substring($string, $startAfter, $untilBefore);
         $this->assertEquals($expectedResult, $result);
     }
 
@@ -273,56 +273,56 @@ abstract class StringUtilityInterfaceTest extends PHPUnit_Framework_TestCase
         return [
             'only unique words' => [
                 'string'            => 'a line with only unique words',
-                'after'             => 'with',
-                'before'            => 'unique',
+                'startAfter'        => 'with',
+                'untilBefore'       => 'unique',
                 'expectedResult'    => ' only '
             ],
             'duplicated words' => [
                 'string'            => 'a line with some duplicated words like line some or words',
-                'after'             => 'some',
-                'before'            => 'words',
+                'startAfter'        => 'some',
+                'untilBefore'       => 'words',
                 'expectedResult'    => ' duplicated '
             ],
             'no after' => [
                 'string'            => 'no after available here',
-                'after'             => 'some',
-                'before'            => 'here',
+                'startAfter'        => 'some',
+                'untilBefore'       => 'here',
                 'expectedResult'    => 'no after available '
             ],
             'no before' => [
                 'string'            => 'no before available here',
-                'after'             => 'before',
-                'before'            => 'some',
+                'startAfter'        => 'before',
+                'untilBefore'       => 'some',
                 'expectedResult'    => ' available here'
             ],
             'no after and no before' => [
                 'string'            => 'no before and after available here',
-                'after'             => 'some',
-                'before'            => 'word',
+                'startAfter'        => 'some',
+                'untilBefore'       => 'word',
                 'expectedResult'    => 'no before and after available here'
             ],
             'after is empty' => [
                 'string'            => 'no before and after available here',
-                'after'             => '',
-                'before'            => 'available',
+                'startAfter'        => '',
+                'untilBefore'       => 'available',
                 'expectedResult'    => 'no before and after '
             ],
             'before is empty' => [
                 'string'            => 'no before and after available here',
-                'after'             => 'before',
-                'before'            => '',
+                'startAfter'        => 'before',
+                'untilBefore'       => '',
                 'expectedResult'    => ''
             ],
             'before and after are empty' => [
                 'string'            => 'no before and after available here',
-                'after'             => '',
-                'before'            => '',
+                'startAfter'        => '',
+                'untilBefore'       => '',
                 'expectedResult'    => ''
             ],
             'before is before after' => [
                 'string'            => 'no before and after available here',
-                'after'             => 'after',
-                'before'            => 'before',
+                'startAfter'        => 'after',
+                'untilBefore'       => 'before',
                 'expectedResult'    => ' available here'
             ]
         ];

@@ -113,12 +113,12 @@ interface StringUtilityInterface
      * If $before is not found, this function will return the string until the end.<br />
      *
      * @param string $string
-     * @param string $after
-     * @param string $before
+     * @param string $startAfter
+     * @param string $untilBefore
      *
      * @return string
      */
-    public function substring($string, $after, $before);
+    public function substring($string, $startAfter, $untilBefore);
 
 
 

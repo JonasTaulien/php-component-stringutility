@@ -69,14 +69,14 @@ class StringUtility implements StringUtilityInterface
     /**
      * @inheritdoc
      */
-    public function substring($string, $after, $before)
+    public function substring($string, $startAfter, $untilBefore)
     {
         return $this->substringBefore(
             $this->substringAfter(
                 $string,
-                $after
+                $startAfter
             ),
-            $before
+            $untilBefore
         );
     }
 
