@@ -97,17 +97,17 @@ interface StringUtilityInterface
     public function removeWhitespace($string);
 
     /**
-     * Returns the substring after the first occurrence of $after<br />
-     * and before the first occurrence of $before<br />
+     * Returns the substringBetween after the first occurrence of $startAfter<br />
+     * and before the first occurrence of $untilBefore<br />
      * For example:<br />
-     * substring('there is no foo without a bar', 'no ', ' without') === 'foo'<br />
-     * substring('there is no foo without a bar', 'baz', ' no') === 'there is'<br />
-     * substring('there is no foo without a bar', 'foo ', 'baz') === 'without a bar'<br />
-     * substring('there is no foo without a bar', 'foobar ', 'baz') === 'there is no foo without a bar'<br />
-     * substring('there is no foo without a bar', '', ' without') === 'there is no foo'<br />
-     * substring('there is no foo without a bar', 'is', '') === ''<br />
-     * substring('there is no foo without a bar', '', '') === ''<br />
-     * substring('there is no foo without a bar', 'foo ', 'no') === 'without a bar'<br />
+     * substringBetween('there is no foo without a bar', 'no ', ' without') === 'foo'<br />
+     * substringBetween('there is no foo without a bar', 'baz', ' no') === 'there is'<br />
+     * substringBetween('there is no foo without a bar', 'foo ', 'baz') === 'without a bar'<br />
+     * substringBetween('there is no foo without a bar', 'foobar ', 'baz') === 'there is no foo without a bar'<br />
+     * substringBetween('there is no foo without a bar', '', ' without') === 'there is no foo'<br />
+     * substringBetween('there is no foo without a bar', 'is', '') === ''<br />
+     * substringBetween('there is no foo without a bar', '', '') === ''<br />
+     * substringBetween('there is no foo without a bar', 'foo ', 'no') === 'without a bar'<br />
      * <br />
      * If $after is not found, this function will return the string from the beginning.<br />
      * If $before is not found, this function will return the string until the end.<br />
@@ -118,7 +118,7 @@ interface StringUtilityInterface
      *
      * @return string
      */
-    public function substring($string, $startAfter, $untilBefore);
+    public function substringBetween($string, $startAfter, $untilBefore);
 
 
 

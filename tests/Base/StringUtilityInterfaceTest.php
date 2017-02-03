@@ -99,7 +99,7 @@ abstract class StringUtilityInterfaceTest extends PHPUnit_Framework_TestCase
      */
     public function testSubstring($string, $startAfter, $untilBefore, $expectedResult)
     {
-        $result = $this->stringUtility->substring($string, $startAfter, $untilBefore);
+        $result = $this->stringUtility->substringBetween($string, $startAfter, $untilBefore);
         $this->assertEquals($expectedResult, $result);
     }
 
