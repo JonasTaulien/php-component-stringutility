@@ -106,6 +106,7 @@ interface StringUtilityInterface
      * substring('there is no foo without a bar', 'foobar ', 'baz') === 'there is no foo without a bar'<br />
      * substring('there is no foo without a bar', '', ' without') === 'there is no foo'<br />
      * substring('there is no foo without a bar', 'is', '') === ''<br />
+     * substring('there is no foo without a bar', '', '') === ''<br />
      * substring('there is no foo without a bar', 'foo ', 'no') === 'without a bar'<br />
      * <br />
      * If $after is not found, this function will return the string from the beginning.<br />

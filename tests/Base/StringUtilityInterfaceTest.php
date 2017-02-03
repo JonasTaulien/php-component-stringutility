@@ -313,6 +313,12 @@ abstract class StringUtilityInterfaceTest extends PHPUnit_Framework_TestCase
                 'before'            => '',
                 'expectedResult'    => ''
             ],
+            'before and after are empty' => [
+                'string'            => 'no before and after available here',
+                'after'             => '',
+                'before'            => '',
+                'expectedResult'    => ''
+            ],
             'before is before after' => [
                 'string'            => 'no before and after available here',
                 'after'             => 'after',
