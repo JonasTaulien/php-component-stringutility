@@ -60,3 +60,7 @@ $stringUtility->split('user@my-domain.com:secret', ':') === ['user@my-domain.com
     $stringUtility->substringBetween($myString, $x, '') === ''
     $stringUtility->split($myString, '') === ['', $myString]
     ```
+
+## Contributors
+* [Jonas Rudolph](https://github.com/JonasRudolph)
+* [Stev Leibelt](https://github.com/stevleibelt)
