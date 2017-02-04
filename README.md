@@ -26,5 +26,37 @@ $stringUtility->substringBefore('www.my-domain.com/user?id=1&token=xyz', '?') ==
 
 $stringUtility->substringBetween('there is no foo without a bar', 'no ', ' without') === 'foo'
 
-$stringUtility->splitAt('user@my-domain.com:secret', ':') === ['user@my-domain.com', 'secret']
+$stringUtility->split('user@my-domain.com:secret', ':') === ['user@my-domain.com', 'secret']
 ```
+
+## Consistent rules used in all functions
+* When a function searches for a needle anywhere in a string and the string contains the needle more than once - then, the function will use the first occurence of the needle in the string for further computations  
+  That means:
+  
+    ```php  
+    $stringUtility->substringAfter('abefbg', 'b') === 'efbg'
+    $stringUtility->substringBefore('abefbg', 'b') === 'a'
+    $stringUtility->split('user@my-domain.com:secret', ':') === ['user@my-domain.com', 'secret']
+    ``` 
+  
+  One exception is the substringBetween function which will search for the first $untilBefore-string *after* the occurence of the first $startAfter-string  
+  
+    ```php  
+    $stringUtility->substringBetween('abefbg', 'b', 'b') === 'ef'
+    $stringUtility->substringBetween('abefbg', 'e', 'b') === 'f'
+    $stringUtility->substringBetween('abcdefg', 'c', 'b') === 'defg'
+    ```
+  
+* Every character of a a string is surrounded by the empty string ('') infinitly times  
+  That means:  
+  
+    ```php
+    $stringUtility->contains($myString, '') === true
+    $stringUtility->startsWith($myString, '') === true
+    $stringUtility->endsWith($myString, '') === true;
+    $stringUtility->substringAfter($myString, '') === $myString
+    $stringUtility->substringBefore($myString, '') === ''
+    $stringUtility->substringBetween('abcd', '', 'b') === 'a'
+    $stringUtility->substringBetween($myString, $x, '') === ''
+    $stringUtility->split($myString, '') === ['', $myString]
+    ```
