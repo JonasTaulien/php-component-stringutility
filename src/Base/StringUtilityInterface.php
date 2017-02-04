@@ -96,6 +96,30 @@ interface StringUtilityInterface
      */
     public function removeWhitespace($string);
 
+    /**
+     * Returns the substringBetween after the first occurrence of $startAfter<br />
+     * and before the first occurrence of $untilBefore<br />
+     * For example:<br />
+     * substringBetween('there is no foo without a bar', 'no ', ' without') === 'foo'<br />
+     * substringBetween('there is no foo without a bar', 'baz', ' no') === 'there is'<br />
+     * substringBetween('there is no foo without a bar', 'foo ', 'baz') === 'without a bar'<br />
+     * substringBetween('there is no foo without a bar', 'foobar ', 'baz') === 'there is no foo without a bar'<br />
+     * substringBetween('there is no foo without a bar', '', ' without') === 'there is no foo'<br />
+     * substringBetween('there is no foo without a bar', 'is', '') === ''<br />
+     * substringBetween('there is no foo without a bar', '', '') === ''<br />
+     * substringBetween('there is no foo without a bar', 'foo ', 'no') === 'without a bar'<br />
+     * <br />
+     * If $after is not found, this function will return the string from the beginning.<br />
+     * If $before is not found, this function will return the string until the end.<br />
+     *
+     * @param string $string
+     * @param string $startAfter
+     * @param string $untilBefore
+     *
+     * @return string
+     */
+    public function substringBetween($string, $startAfter, $untilBefore);
+
 
 
     /**

@@ -11,5 +11,4 @@ class StringUtilityTest extends StringUtilityInterfaceTest
     {
         return new StringUtility();
     }
-
 }

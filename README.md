@@ -24,5 +24,7 @@ $stringUtility->substringAfter('www.my-domain.com/index.php', '.com/') === 'inde
 
 $stringUtility->substringBefore('www.my-domain.com/user?id=1&token=xyz', '?') === 'www.my-domain.com/user'
 
+$stringUtility->substringBetween('there is no foo without a bar', 'no ', ' without') === 'foo'
+
 $stringUtility->splitAt('user@my-domain.com:secret', ':') === ['user@my-domain.com', 'secret']
 ```
