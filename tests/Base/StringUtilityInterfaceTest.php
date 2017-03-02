@@ -41,7 +41,7 @@ abstract class StringUtilityInterfaceTest extends PHPUnit_Framework_TestCase
     public function testContains($string, $needle, $wantedResult)
     {
         $result = $this->stringUtility->contains($string, $needle);
-        $this->assertEquals($wantedResult, $result);
+        $this->assertSame($wantedResult, $result);
     }
 
 
@@ -56,7 +56,7 @@ abstract class StringUtilityInterfaceTest extends PHPUnit_Framework_TestCase
     public function testStartsWith($string, $prefix, $wantedResult)
     {
         $result = $this->stringUtility->startsWith($string, $prefix);
-        $this->assertEquals($wantedResult, $result);
+        $this->assertSame($wantedResult, $result);
     }
 
 
@@ -71,7 +71,7 @@ abstract class StringUtilityInterfaceTest extends PHPUnit_Framework_TestCase
     public function testEndsWith($string, $suffix, $wantedResult)
     {
         $result = $this->stringUtility->endsWith($string, $suffix);
-        $this->assertEquals($wantedResult, $result);
+        $this->assertSame($wantedResult, $result);
     }
 
 
@@ -86,8 +86,10 @@ abstract class StringUtilityInterfaceTest extends PHPUnit_Framework_TestCase
     public function testRemovePrefix($string, $prefix, $wantedResult)
     {
         $result = $this->stringUtility->removePrefix($string, $prefix);
-        $this->assertEquals($wantedResult, $result);
+        $this->assertSame($wantedResult, $result);
     }
+
+
 
     /**
      * @param string $string
@@ -97,10 +99,10 @@ abstract class StringUtilityInterfaceTest extends PHPUnit_Framework_TestCase
      *
      * @dataProvider substringDataProvider
      */
-    public function testSubstring($string, $startAfter, $untilBefore, $expectedResult)
+    public function testSubstringBetween($string, $startAfter, $untilBefore, $expectedResult)
     {
         $result = $this->stringUtility->substringBetween($string, $startAfter, $untilBefore);
-        $this->assertEquals($expectedResult, $result);
+        $this->assertSame($expectedResult, $result);
     }
 
 
@@ -115,7 +117,7 @@ abstract class StringUtilityInterfaceTest extends PHPUnit_Framework_TestCase
     public function testSubstringAfter($string, $needle, $wantedResult)
     {
         $result = $this->stringUtility->substringAfter($string, $needle);
-        $this->assertEquals($wantedResult, $result);
+        $this->assertSame($wantedResult, $result);
     }
 
 
@@ -130,7 +132,7 @@ abstract class StringUtilityInterfaceTest extends PHPUnit_Framework_TestCase
     public function testSubstringBefore($string, $needle, $wantedResult)
     {
         $result = $this->stringUtility->substringBefore($string, $needle);
-        $this->assertEquals($wantedResult, $result);
+        $this->assertSame($wantedResult, $result);
     }
 
 
@@ -145,7 +147,7 @@ abstract class StringUtilityInterfaceTest extends PHPUnit_Framework_TestCase
     public function testSplitAt($string, $delimiter, $wantedResult)
     {
         $result = $this->stringUtility->split($string, $delimiter);
-        $this->assertEquals($wantedResult, $result);
+        $this->assertSame($wantedResult, $result);
     }
 
 
@@ -160,7 +162,7 @@ abstract class StringUtilityInterfaceTest extends PHPUnit_Framework_TestCase
     public function testRemoveSuffix($string, $suffix, $wantedResult)
     {
         $result = $this->stringUtility->removeSuffix($string, $suffix);
-        $this->assertEquals($wantedResult, $result);
+        $this->assertSame($wantedResult, $result);
     }
 
 
@@ -174,7 +176,7 @@ abstract class StringUtilityInterfaceTest extends PHPUnit_Framework_TestCase
     public function testRemoveWhitespace($string, $wantedResult)
     {
         $result = $this->stringUtility->removeWhitespace($string);
-        $this->assertEquals($wantedResult, $result);
+        $this->assertSame($wantedResult, $result);
     }
 
 
@@ -243,6 +245,7 @@ abstract class StringUtilityInterfaceTest extends PHPUnit_Framework_TestCase
             ['123456789', '123456789', ''],
             ['123456', '', '123456'],
             ['asd-asd', 'a', 'sd-asd'],
+            ['', '', ''],
 
             ['123456789', '1234567890', '123456789'],
             ['http://www.my-domain.com', 'http://ww.', 'http://www.my-domain.com'],
@@ -259,6 +262,7 @@ abstract class StringUtilityInterfaceTest extends PHPUnit_Framework_TestCase
             ['123456789', '123456789', ''],
             ['123456', '', '123456'],
             ['dasd-asd', 'd', 'dasd-as'],
+            ['', '', ''],
 
             ['123456789', '1234567890', '123456789'],
             ['http://www.my-domain.com', '://www.my-domain.com', 'http'],
@@ -324,9 +328,22 @@ abstract class StringUtilityInterfaceTest extends PHPUnit_Framework_TestCase
                 'startAfter'        => 'after',
                 'untilBefore'       => 'before',
                 'expectedResult'    => ' available here'
+            ],
+            'the string contains only startAfter and untilBefore' => [
+                'string'            => 'startAfteruntilBefore',
+                'startAfter'        => 'startAfter',
+                'untilBefore'       => 'untilBefore',
+                'expectedResult'    => ''
+            ],
+            'all empty' => [
+                'string'            => '',
+                'startAfter'        => '',
+                'untilBefore'       => '',
+                'expectedResult'    => ''
             ]
         ];
     }
+
 
 
     public function substringAfterDataProvider()
@@ -339,6 +356,7 @@ abstract class StringUtilityInterfaceTest extends PHPUnit_Framework_TestCase
             ['www.my-domain.com/index.php', '.php', ''],
             ['www.my-domain.com/index.php', '.', 'my-domain.com/index.php'],
             ['12345', '23', '45'],
+            ['', '', ''],
 
             ['http://www.my-domain.com', 'HTTP', 'http://www.my-domain.com'],
             ['', 'a', ''],
@@ -357,6 +375,7 @@ abstract class StringUtilityInterfaceTest extends PHPUnit_Framework_TestCase
             ['abcdefg', 'abcdefg', ''],
             ['abcdefg', '', ''],
             ['abcdefg', 'efg', 'abcd'],
+            ['', '', ''],
 
             ['abcdefg', 'aabcdefg', 'abcdefg'],
             ['abcdefg', 'efgh', 'abcdefg'],

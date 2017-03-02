@@ -41,7 +41,17 @@ class StringUtility implements StringUtilityInterface
      */
     public function removePrefix($string, $prefix)
     {
-        return $this->startsWith($string, $prefix) ? substr($string, strlen($prefix)) : $string;
+        if ($string === $prefix) {
+            $remainingString = '';
+
+        } else if ($this->startsWith($string, $prefix)) {
+            $remainingString = substr($string, strlen($prefix));
+
+        } else {
+            $remainingString = $string;
+        }
+
+        return $remainingString;
     }
 
 
@@ -51,7 +61,17 @@ class StringUtility implements StringUtilityInterface
      */
     public function removeSuffix($string, $suffix)
     {
-        return $this->endsWith($string, $suffix) ? substr($string, 0, (strlen($string) - strlen($suffix))) : $string;
+        if ($string === $suffix) {
+            $remainingString = '';
+
+        } else if ($this->endsWith($string, $suffix)) {
+            $remainingString = substr($string, 0, (strlen($string) - strlen($suffix)));
+
+        } else {
+            $remainingString = $string;
+        }
+
+        return $remainingString;
     }
 
 
@@ -71,11 +91,19 @@ class StringUtility implements StringUtilityInterface
      */
     public function substringAfter($string, $needle)
     {
-        //If needle empty or not found: Return string
-        //Else return characters after needle
-        return (($needle === '') || (false === ($strposResult = strpos($string, $needle))))
-            ? $string
-            : substr($string, ($strposResult + strlen($needle)));
+        if (($needle === '') || (false === ($strposResult = strpos($string, $needle)))) {
+            $remainingString = $string;
+        } else {
+            $indexOfFirstCharacterOfRemainingString = $strposResult + strlen($needle);
+            $stringLength = strlen($string);
+            if ($indexOfFirstCharacterOfRemainingString === $stringLength) {
+                $remainingString = '';
+            } else {
+                $remainingString = substr($string, $indexOfFirstCharacterOfRemainingString);
+            }
+        }
+
+        return $remainingString;
     }
 
 
@@ -87,7 +115,7 @@ class StringUtility implements StringUtilityInterface
     {
         $strposResult = ($needle === '') ? 0 : strpos($string, $needle);
 
-        return (false === $strposResult)
+        return (false === $strposResult) || ($string === '')
             ? $string
             : substr($string, 0, $strposResult);
     }
@@ -115,11 +143,10 @@ class StringUtility implements StringUtilityInterface
      */
     public function split($string, $delimiter)
     {
-        $strposResult = ($delimiter === '') ? 0 : strpos($string, $delimiter);
+        $first = $this->substringBefore($string, $delimiter);
+        $rest = $this->removePrefix($string, $first);
+        $second = $this->substringAfter($rest, $delimiter);
 
-        return (false === $strposResult)
-            ? [$string, '']
-            : [substr($string, 0, $strposResult), substr($string, $strposResult + strlen($delimiter))];
+        return [$first, $second];
     }
-
 }
