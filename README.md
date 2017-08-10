@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/JonasRudolph/php-component-stringutility.svg?branch=master)](https://travis-ci.org/JonasRudolph/php-component-stringutility)
 [![BCH compliance](https://bettercodehub.com/edge/badge/JonasRudolph/php-component-stringutility?branch=master)](https://bettercodehub.com/results/JonasRudolph/php-component-stringutility)
 [![Dependency Status](https://gemnasium.com/badges/github.com/JonasRudolph/php-component-stringutility.svg)](https://gemnasium.com/github.com/JonasRudolph/php-component-stringutility)
 
