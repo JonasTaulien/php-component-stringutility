@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/JonasRudolph/php-component-stringutility.svg?branch=master)](https://travis-ci.org/JonasRudolph/php-component-stringutility)
 [![Dependency Status](https://gemnasium.com/badges/github.com/JonasRudolph/php-component-stringutility.svg)](https://gemnasium.com/github.com/JonasRudolph/php-component-stringutility)  
 [![BCH compliance](https://bettercodehub.com/edge/badge/JonasRudolph/php-component-stringutility?branch=master)](https://bettercodehub.com/results/JonasRudolph/php-component-stringutility)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/80b36cf3054d40a19910986b256606c2)](https://www.codacy.com/app/jonas.ru/php-component-stringutility?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=JonasRudolph/php-component-stringutility&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/80b36cf3054d40a19910986b256606c2)](https://www.codacy.com/app/jonas.ru/php-component-stringutility)
 
 # php-component-stringutility
 * Well tested functions on strings:
