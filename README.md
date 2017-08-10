@@ -1,3 +1,5 @@
+[![BCH compliance](https://bettercodehub.com/edge/badge/JonasRudolph/php-component-stringutility?branch=master)](https://bettercodehub.com/results/JonasRudolph/php-component-stringutility)
+
 # php-component-stringutility
 * Well tested functions on strings:
 
